@@ -141,6 +141,17 @@ plugins:
       kernel_name: python3
 ```
 
+#### Slugifying URLs
+
+By default the plugin will preserve the notebook filename as the final URL. Alternatively, you can have the title converted to lowercase and spaces replaced with hyphens.
+
+```yaml
+plugins:
+  - mkdocs-jupyter:
+      slugify_urls: True
+```
+
+
 #### Ingore Code Input
 
 By default the plugin will show full code and regular cell output details.

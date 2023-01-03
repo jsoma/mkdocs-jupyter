@@ -21,10 +21,16 @@ class NotebookFile(File):
     def __init__(self, file, use_directory_urls, site_dir, **kwargs):
         self.file = file
         self.dest_path = self._get_dest_path(use_directory_urls)
+
+        if kwargs.get('slugify_urls', True):
+            self.dest_path = self.dest_path.lower().replace(" ", "-")
+
         self.abs_dest_path = os.path.normpath(
             os.path.join(site_dir, self.dest_path)
         )
         self.url = self._get_url(use_directory_urls)
+        if kwargs.get('slugify_urls', True):
+            self.url = self.url.lower().replace(" ", "-")
 
     def __getattr__(self, item):
         return self.file.__getattribute__(item)
@@ -37,6 +43,7 @@ class Plugin(mkdocs.plugins.BasePlugin):
     config_scheme = (
         ("include", config_options.Type(list, default=["*.py", "*.ipynb"])),
         ("ignore", config_options.Type(list, default=[])),
+        ("slugify-urls", config_options.Type(bool, default=False)),
         ("execute", config_options.Type(bool, default=False)),
         ("execute_ignore", config_options.Type(str, default="")),
         ("theme", config_options.Type(str, default="")),
