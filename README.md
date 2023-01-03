@@ -103,6 +103,19 @@ plugins:
       ignore: ["some-irrelevant-files/*.ipynb"]
 ```
 
+
+### Slugifying URLs
+
+By default the plugin will preserve the notebook filename as the final URL. Alternatively, you can have the title converted to lowercase and spaces replaced with hyphens.
+
+```yaml
+plugins:
+  - mkdocs-jupyter:
+      slugify_urls: True
+```
+
+For example, `Lorem Ipsum.ipynb` would be found at `/lorem-ipsum/` instead of `/Lorem%20Ipsum/`.
+
 ### Execute Notebook
 
 You can tell the plugin to execute the notebook before converting, default is `False`:
@@ -140,19 +153,6 @@ plugins:
   - mkdocs-jupyter:
       kernel_name: python3
 ```
-
-#### Slugifying URLs
-
-By default the plugin will preserve the notebook filename as the final URL. Alternatively, you can have the title converted to lowercase and spaces replaced with hyphens.
-
-```yaml
-plugins:
-  - mkdocs-jupyter:
-      slugify_urls: True
-```
-
-For example, `Lorem Ipsum.ipynb` would be found at `/lorem-ipsum/` instead of `/Lorem%20Ipsum/`.
-
 
 #### Ingore Code Input
 
