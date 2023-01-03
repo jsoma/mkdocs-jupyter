@@ -151,6 +151,8 @@ plugins:
       slugify_urls: True
 ```
 
+For example, `Lorem Ipsum.ipynb` would be found at `/lorem-ipsum/` instead of `/Lorem%20Ipsum/`.
+
 
 #### Ingore Code Input
 
